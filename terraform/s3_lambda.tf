@@ -22,7 +22,7 @@ resource "aws_s3_bucket_acl" "fraud_detection_function_bucket_acl" {
 
 
 resource "aws_s3_object" "s3_fraud_detection_archive" {
-  bucket = aws_s3_bucket.fraud_detection_function_bucket.id
+  bucket = aws_s3_bucket.frauddetectionfunctionbucket.id
   key    = "fraud-detection-using-machine-learning/${var.function_version}/fraud_detection.zip"
   source = data.archive_file.fraud_detection_archive.output_path
 

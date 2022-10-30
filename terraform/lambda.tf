@@ -10,7 +10,7 @@ resource "aws_lambda_function" "fraud_detection_event_processor" {
   # source_code_hash = "${base64sha256(file("lambda_function_payload.zip"))}"
   source_code_hash = filebase64sha256(data.archive_file.fraud_detection_archive.output_path)
 
-  runtime = "python3.6"
+  runtime = "python3.9"
 
   tags = {
     Group     = var.default_resource_group

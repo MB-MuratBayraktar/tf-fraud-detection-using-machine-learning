@@ -1,7 +1,7 @@
-resource "aws_iam_role_policy_attachment" "data_scientist_attach" {
-    role = "switch-role-custom"
-    policy_arn = "arn:aws:iam::aws:policy/job-function/DataScientist"
-}
+#resource "aws_iam_role_policy_attachment" "data_scientist_attach" {
+#    role = "switch-role-custom"
+#    policy_arn = "arn:aws:iam::aws:policy/job-function/DataScientist"
+#}
 
 resource "aws_iam_role" "sm_notebook_instance_role" {
   name = "sm-notebook-instance-role"
