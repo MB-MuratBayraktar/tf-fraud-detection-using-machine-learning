@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "s3_bucket_2" {
+resource "aws_s3_bucket" "s3bucket2" {
   bucket        = "${var.s3_bucket_name_2}-${var.aws_region}"
   force_destroy = true                                        # delete all data from this bucket before destroy
 
@@ -9,7 +9,7 @@ resource "aws_s3_bucket" "s3_bucket_2" {
   }
 }
 
-resource "aws_s3_bucket_acl" "s3_bucket_2_acl" {
-  bucket = aws_s3_bucket.s3_bucket_2.id
+resource "aws_s3_bucket_acl" "s3bucket2acl" {
+  bucket = aws_s3_bucket.s3bucket2.id
   acl="private"
 }

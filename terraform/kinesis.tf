@@ -3,7 +3,7 @@ resource "aws_kinesis_firehose_delivery_stream" "fraud_detection_firehose_stream
   destination = "s3"
 
   s3_configuration {
-    bucket_arn         = aws_s3_bucket.s3_bucket_2.arn
+    bucket_arn         = aws_s3_bucket.s3bucket2.arn
     prefix             = var.kinesis_firehose_prefix
     buffer_interval    = 60
     buffer_size        = 100

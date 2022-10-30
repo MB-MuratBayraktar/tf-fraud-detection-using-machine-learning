@@ -46,9 +46,9 @@ resource "aws_iam_policy" "sm_notebook_instance_policy" {
                 "s3:DeleteObject"
             ],
             "Resource": [
-                "arn:aws:s3:::${aws_s3_bucket.s3_bucket_1.id}",
-                "arn:aws:s3:::${aws_s3_bucket.s3_bucket_1.id}/*",
-                "arn:aws:s3:::${aws_s3_bucket.fraud_detection_function_bucket.id}/*"
+                "arn:aws:s3:::${aws_s3_bucket.s3bucket1.id}",
+                "arn:aws:s3:::${aws_s3_bucket.s3bucket1.id}/*",
+                "arn:aws:s3:::${aws_s3_bucket.frauddetectionfunctionbucket.id}/*"
             ]
         },
         {

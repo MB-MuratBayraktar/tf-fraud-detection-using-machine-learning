@@ -47,8 +47,8 @@ resource "aws_iam_policy" "fraud_detection_firehose_policy" {
                 "s3:PutObject"
             ],
             "Resource": [
-                "arn:aws:s3:::${aws_s3_bucket.s3_bucket_2.id}",
-                "arn:aws:s3:::${aws_s3_bucket.s3_bucket_2.id}/${var.kinesis_firehose_prefix}*"
+                "arn:aws:s3:::${aws_s3_bucket.s3bucket2.id}",
+                "arn:aws:s3:::${aws_s3_bucket.s3bucket2.id}/${var.kinesis_firehose_prefix}*"
             ]
         }
     ]

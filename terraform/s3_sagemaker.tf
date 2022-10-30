@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "s3_bucket_1" {
+resource "aws_s3_bucket" "s3bucket1" {
   bucket        = "${var.s3_bucket_name_1}-${var.aws_region}"
 
   force_destroy = true                                        # delete all data from this bucket before destroy
@@ -12,12 +12,12 @@ resource "aws_s3_bucket" "s3_bucket_1" {
 }
 
 resource "aws_s3_bucket_acl" "s3_bucket_1_acl" {
-          bucket = aws_s3_bucket.s3_bucket_1.id
+          bucket = aws_s3_bucket.s3bucket1.id
           acl = "private"
 }
 
 resource "aws_s3_object" "s3_fraud_detection_notebook" {
-  bucket = aws_s3_bucket.fraud_detection_function_bucket.id
+  bucket = aws_s3_bucket.frauddetectionfunctionbucket.id
   key    = "fraud-detection-using-machine-learning/${var.function_version}/notebooks/sagemaker_fraud_detection.ipynb"
   source = "${path.module}/../source/notebooks/sagemaker_fraud_detection.ipynb"
 

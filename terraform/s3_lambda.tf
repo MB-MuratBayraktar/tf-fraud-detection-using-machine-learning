@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "fraud_detection_function_bucket" {
+resource "aws_s3_bucket" "frauddetectionfunctionbucket" {
   bucket = "${var.function_bucket_name}-${var.aws_region}"
 
   tags = {
@@ -16,7 +16,7 @@ data "archive_file" "fraud_detection_archive" {
 }
 
 resource "aws_s3_bucket_acl" "fraud_detection_function_bucket_acl" {
-  bucket = aws_s3_bucket.fraud_detection_function_bucket.id
+  bucket = aws_s3_bucket.frauddetectionfunctionbucket.id
   acl = "private"
 }
 

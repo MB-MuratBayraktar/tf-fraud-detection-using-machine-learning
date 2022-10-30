@@ -16,7 +16,7 @@ data "template_file" "instance_init" {
   template = file("${path.module}/template/sagemaker_instance_init.sh")
 
   vars = {
-    s3_bucket_name_1     = aws_s3_bucket.s3_bucket_1.id
+    s3_bucket_name_1     = aws_s3_bucket.s3bucket1.id
     aws_region           = var.aws_region
     function_bucket_name = var.function_bucket_name
     function_version     = var.function_version
@@ -27,5 +27,5 @@ resource "aws_sagemaker_notebook_instance_lifecycle_configuration" "basic_lifecy
   name     = "BasicNotebookInstanceLifecycleConfig"
   on_start = base64encode(data.template_file.instance_init.rendered)
 
-  depends_on = [aws_s3_bucket.s3_bucket_1]
+  depends_on = [aws_s3_bucket.s3bucket1]
 }
