@@ -11,14 +11,12 @@ resource "aws_s3_bucket" "s3_bucket_1" {
   }
 }
 
-resource "aws_s3_bucket_acl" "s3_bucket_1_acl"
-  {
+resource "aws_s3_bucket_acl" "s3_bucket_1_acl" {
           bucket = aws_s3_bucket.s3_bucket_1.id
           acl = private
-  }
+}
 
-resource "aws_s3_bucket_acl" "s3_bucket_1_acl"
-{
+resource "aws_s3_bucket_acl" "s3_bucket_1_acl" {
   bucket = aws_s3_bucket.s3_bucket_1.id
   acl=private
 }

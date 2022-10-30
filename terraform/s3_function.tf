@@ -25,8 +25,7 @@ resource "aws_s3_bucket_object" "s3_fraud_detection_archive" {
   etag = filemd5(data.archive_file.fraud_detection_archive.output_path) # use md5 of index.py to detect changes in the function
 }
 
-resource "aws_s3_bucket_acl" "fraud_detection_function_bucket_acl"
-{
+resource "aws_s3_bucket_acl" "fraud_detection_function_bucket_acl" {
   acl=private
   bucket = aws_s3_bucket.fraud_detection_function_bucket.id
 }

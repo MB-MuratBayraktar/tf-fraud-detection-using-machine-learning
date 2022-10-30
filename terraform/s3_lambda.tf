@@ -15,8 +15,7 @@ data "archive_file" "fraud_detection_archive" {
   output_path = "${path.module}/../dist/fraud_detection.zip"
 }
 
-resource "aws_s3_bucket_acl" "fraud_detection_function_bucket_acl"
-{
+resource "aws_s3_bucket_acl" "fraud_detection_function_bucket_acl" {
   bucket = aws_s3_bucket.fraud_detection_function_bucket
   acl = private
 }
