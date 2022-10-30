@@ -13,10 +13,10 @@ resource "aws_s3_bucket" "s3_bucket_1" {
 
 resource "aws_s3_bucket_acl" "s3_bucket_1_acl" {
           bucket = aws_s3_bucket.s3_bucket_1.id
-          acl = private
+          acl = "private"
 }
 
-resource "aws_s3_bucket_object" "s3_fraud_detection_notebook" {
+resource "aws_s3_object" "s3_fraud_detection_notebook" {
   bucket = aws_s3_bucket.fraud_detection_function_bucket.id
   key    = "fraud-detection-using-machine-learning/${var.function_version}/notebooks/sagemaker_fraud_detection.ipynb"
   source = "${path.module}/../source/notebooks/sagemaker_fraud_detection.ipynb"

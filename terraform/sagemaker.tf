@@ -9,7 +9,7 @@ resource "aws_sagemaker_notebook_instance" "basic" {
     CreatedBy = var.default_created_by
   }
 
-  depends_on = [aws_s3_bucket_object.s3_fraud_detection_notebook ]
+  depends_on = [aws_s3_object.s3_fraud_detection_notebook ]
 }
 
 data "template_file" "instance_init" {

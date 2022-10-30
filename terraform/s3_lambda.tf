@@ -16,12 +16,12 @@ data "archive_file" "fraud_detection_archive" {
 }
 
 resource "aws_s3_bucket_acl" "fraud_detection_function_bucket_acl" {
-  bucket = aws_s3_bucket.fraud_detection_function_bucket
-  acl = private
+  bucket = aws_s3_bucket.fraud_detection_function_bucket.id
+  acl = "private"
 }
 
 
-resource "aws_s3_bucket_object" "s3_fraud_detection_archive" {
+resource "aws_s3_object" "s3_fraud_detection_archive" {
   bucket = aws_s3_bucket.fraud_detection_function_bucket.id
   key    = "fraud-detection-using-machine-learning/${var.function_version}/fraud_detection.zip"
   source = data.archive_file.fraud_detection_archive.output_path

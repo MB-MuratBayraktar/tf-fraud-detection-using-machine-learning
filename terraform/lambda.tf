@@ -17,5 +17,5 @@ resource "aws_lambda_function" "fraud_detection_event_processor" {
     CreatedBy = var.default_created_by
   }
 
-  depends_on = [aws_s3_bucket_object.s3_fraud_detection_archive]
+  depends_on = [aws_s3_object.s3_fraud_detection_archive]
 }
