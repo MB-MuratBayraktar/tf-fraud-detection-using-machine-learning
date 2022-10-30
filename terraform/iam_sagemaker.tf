@@ -27,11 +27,6 @@ resource "aws_iam_role" "sm_notebook_instance_role" {
 EOF
 }
 
-resource "aws_iam_role_policy_attachment" "sm_notebook_instance" {
-  role       = aws_iam_role.sm_notebook_instance_role.name
-  policy_arn = aws_iam_policy.sm_notebook_instance_policy.arn
-}
-
 resource "aws_iam_policy" "sm_notebook_instance_policy" {
   name        = "sm-notebook-instance-policy"
   description = "Policy for the Notebook Instance to manage training jobs, models and endpoints"
@@ -103,7 +98,7 @@ resource "aws_iam_policy" "sm_notebook_instance_policy" {
             "Resource": "*",
             "Condition": {
                 "ForAllValues:StringLike": {
-                    "sagemaker:InstanceTypes": ["ml.t2.large"]
+                    "sagemaker:InstanceTypes": ["ml.t2.medium"]
                 }
             }
         },
@@ -159,3 +154,9 @@ resource "aws_iam_policy" "sm_notebook_instance_policy" {
 }
 EOF
 }
+
+resource "aws_iam_role_policy_attachment" "sm_notebook_instance" {
+  role       = aws_iam_role.sm_notebook_instance_role.name
+  policy_arn = aws_iam_policy.sm_notebook_instance_policy.arn
+}
+

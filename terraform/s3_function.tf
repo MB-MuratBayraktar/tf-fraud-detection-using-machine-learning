@@ -1,14 +1,5 @@
 resource "aws_s3_bucket" "fraud_detection_function_bucket" {
   bucket = "${var.function_bucket_name}-${var.aws_region}"
-  acl    = "private"
-
-  server_side_encryption_configuration {
-    rule {
-      apply_server_side_encryption_by_default {
-        sse_algorithm = "AES256"
-      }
-    }
-  }
 
   tags = {
     Description = "Bucket hosting the code for fraud_detection Lambda function."
@@ -32,4 +23,10 @@ resource "aws_s3_bucket_object" "s3_fraud_detection_archive" {
   # For Terraform 0.11.11 and earlier, use the md5() function and the file() function:
   # etag = "${md5(file("path/to/file"))}"
   etag = filemd5(data.archive_file.fraud_detection_archive.output_path) # use md5 of index.py to detect changes in the function
+}
+
+resource "aws_s3_bucket_acl" "fraud_detection_function_bucket_acl"
+{
+  acl=private
+  bucket = aws_s3_bucket.fraud_detection_function_bucket.id
 }
